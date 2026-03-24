@@ -1,0 +1,2 @@
+extends MainEntity
+class_name DynamicEntity

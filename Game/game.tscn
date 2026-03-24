@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn0v13nft4mdl"]
+
+[ext_resource type="PackedScene" uid="uid://1ywwgwtgci7f" path="res://Game/Titlescreen/Level/level.tscn" id="1_2kftk"]
+[ext_resource type="Script" uid="uid://77hnmb3xrxpt" path="res://Game/game.gd" id="1_iahqq"]
+[ext_resource type="Texture2D" uid="uid://gfqgk7t40d67" path="res://icon.svg" id="3_7raqb"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_iahqq")
+
+[node name="level" parent="." instance=ExtResource("1_2kftk")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 1924.0
+offset_bottom = 2164.0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer0" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SubViewportContainer0" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer0"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer0"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer0/SubViewport"]
+
+[node name="SubViewportContainer1" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer0"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer1"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer1/SubViewport"]
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer2/SubViewport"]
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer3"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer3/SubViewport"]
+position = Vector2(-1000, -1000)
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -11
+position = Vector2(1001.0001, 1153)
+scale = Vector2(100, 100)
+texture = ExtResource("3_7raqb")

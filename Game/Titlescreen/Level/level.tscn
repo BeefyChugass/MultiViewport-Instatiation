@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://1ywwgwtgci7f"]
+
+[ext_resource type="PackedScene" uid="uid://bah8p2o80edrn" path="res://Game/Titlescreen/Character/player_1.tscn" id="1_gr5ys"]
+[ext_resource type="PackedScene" uid="uid://b4wko572dnr0v" path="res://Game/Titlescreen/Character/player_2.tscn" id="2_uorm4"]
+[ext_resource type="Texture2D" uid="uid://curvqxvkr1mwh" path="res://kitty.webp" id="3_8ie0k"]
+[ext_resource type="PackedScene" uid="uid://b5fq68squ2730" path="res://Game/Titlescreen/Character/player_3.tscn" id="3_tyefk"]
+[ext_resource type="PackedScene" uid="uid://ckweya5y5vvpn" path="res://Game/Titlescreen/Character/player_4.tscn" id="4_so2t0"]
+
+[node name="level" type="Node2D"]
+
+[node name="Player0" parent="." instance=ExtResource("1_gr5ys")]
+position = Vector2(68, 81)
+
+[node name="Player1" parent="." instance=ExtResource("2_uorm4")]
+position = Vector2(1218, 71)
+
+[node name="Player2" parent="." instance=ExtResource("3_tyefk")]
+position = Vector2(74, 636)
+
+[node name="Player3" parent="." instance=ExtResource("4_so2t0")]
+position = Vector2(1214, 646)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(583, 572)
+texture = ExtResource("3_8ie0k")

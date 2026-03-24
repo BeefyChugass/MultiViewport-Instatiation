@@ -1,0 +1,2 @@
+extends Attackable
+class_name Hurtable

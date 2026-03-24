@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5fq68squ2730"]
+
+[ext_resource type="Texture2D" uid="uid://gfqgk7t40d67" path="res://icon.svg" id="1_h0bb8"]
+[ext_resource type="Script" uid="uid://cotok7ojppie5" path="res://Game/Titlescreen/Character/player_1.gd" id="2_8mtwb"]
+
+[node name="Player3" type="Sprite2D"]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("1_h0bb8")
+script = ExtResource("2_8mtwb")
+player_id = 2
