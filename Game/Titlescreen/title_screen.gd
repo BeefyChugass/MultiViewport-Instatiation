@@ -4,7 +4,7 @@ var player_amount: int
 
 func load_viewports(amount:int):
 	var scene_tree = get_tree()
-	Game_Autoload.player_amount = player_amount
+	Gamehandler.player_amount = player_amount
 	Scene_Manager.change_from_title_to_game()
 
 

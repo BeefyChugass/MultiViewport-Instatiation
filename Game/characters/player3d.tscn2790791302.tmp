@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl3kxu7lg2cdb"]
+
+[ext_resource type="Texture2D" uid="uid://gfqgk7t40d67" path="res://icon.svg" id="1_dxs5l"]
+[ext_resource type="Script" uid="uid://bu434280orhuj" path="res://Game/characters/player_3d.gd" id="1_kav43"]
+[ext_resource type="Script" uid="uid://cbyv7ge7bejxb" path="res://Game/characters/input_component.gd" id="3_oagn5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxs5l"]
+size = Vector3(1, 1, 0.05)
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_kav43")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dxs5l")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+billboard = 2
+shaded = true
+texture = ExtResource("1_dxs5l")
+
+[node name="InputComponent" type="Node" parent="."]
+script = ExtResource("3_oagn5")
+metadata/_custom_type_script = "uid://cbyv7ge7bejxb"

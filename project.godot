@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Controls="*res://Game/Titlescreen/Character/controls.gd"
 Scene_Manager="*res://Game/scene_manager.gd"
-Game_Autoload="*res://Game/game_autoload.gd"
+Gamehandler="*res://Game/game_autoload.gd"
 
 [display]
 
@@ -28,3 +28,115 @@ window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+
+[input]
+
+p0_up={
+"deadzone": 0.2,
+"events": []
+}
+p1_up={
+"deadzone": 0.2,
+"events": []
+}
+p2_up={
+"deadzone": 0.2,
+"events": []
+}
+p3_up={
+"deadzone": 0.2,
+"events": []
+}
+p0_down={
+"deadzone": 0.2,
+"events": []
+}
+p1_down={
+"deadzone": 0.2,
+"events": []
+}
+p2_down={
+"deadzone": 0.2,
+"events": []
+}
+p3_down={
+"deadzone": 0.2,
+"events": []
+}
+p0_left={
+"deadzone": 0.2,
+"events": []
+}
+p1_left={
+"deadzone": 0.2,
+"events": []
+}
+p2_left={
+"deadzone": 0.2,
+"events": []
+}
+p3_left={
+"deadzone": 0.2,
+"events": []
+}
+p0_right={
+"deadzone": 0.2,
+"events": []
+}
+p1_right={
+"deadzone": 0.2,
+"events": []
+}
+p2_right={
+"deadzone": 0.2,
+"events": []
+}
+p3_right={
+"deadzone": 0.2,
+"events": []
+}
+p0_jump={
+"deadzone": 0.2,
+"events": []
+}
+p1_jump={
+"deadzone": 0.2,
+"events": []
+}
+p2_jump={
+"deadzone": 0.2,
+"events": []
+}
+p3_jump={
+"deadzone": 0.2,
+"events": []
+}
+p0_hurt={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
+]
+}
+p1_hurt={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
+]
+}
+p2_hurt={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
+]
+}
+p3_hurt={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":52,"key_label":0,"unicode":52,"location":0,"echo":false,"script":null)
+]
+}
+p0_heal={
+"deadzone": 0.2,
+"events": []
+}
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4

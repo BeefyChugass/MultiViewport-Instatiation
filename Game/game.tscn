@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn0v13nft4mdl"]
+[gd_scene load_steps=5 format=3 uid="uid://bn0v13nft4mdl"]
 
 [ext_resource type="PackedScene" uid="uid://1ywwgwtgci7f" path="res://Game/Titlescreen/Level/level.tscn" id="1_2kftk"]
-[ext_resource type="Script" uid="uid://77hnmb3xrxpt" path="res://Game/game.gd" id="1_iahqq"]
+[ext_resource type="Script" uid="uid://77hnmb3xrxpt" path="res://Game/game_setup.gd" id="1_iahqq"]
+[ext_resource type="PackedScene" uid="uid://bsegmjodshfvl" path="res://Game/level3D.tscn" id="2_jcm6v"]
 [ext_resource type="Texture2D" uid="uid://gfqgk7t40d67" path="res://icon.svg" id="3_7raqb"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_iahqq")
 
-[node name="level" parent="." instance=ExtResource("1_2kftk")]
+[node name="level3D" parent="." instance=ExtResource("2_jcm6v")]
+
+[node name="level2D" parent="." instance=ExtResource("1_2kftk")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -30,6 +33,16 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer0/SubViewport"]
 
+[node name="CameraPivot" type="Node3D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer0/SubViewport"]
+
+[node name="CameraPosition" type="Marker3D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer0/SubViewport/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer0/SubViewport/CameraPivot/CameraPosition"]
+projection = 1
+size = 8.0
+near = 0.001
+
 [node name="SubViewportContainer1" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer0"]
 layout_mode = 2
 
@@ -39,6 +52,16 @@ size = Vector2i(960, 1080)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer1/SubViewport"]
+
+[node name="CameraPivot" type="Node3D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer1/SubViewport"]
+
+[node name="CameraPosition" type="Marker3D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer1/SubViewport/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/VBoxContainer/HBoxContainer0/SubViewportContainer1/SubViewport/CameraPivot/CameraPosition"]
+projection = 1
+size = 8.0
+near = 0.001
 
 [node name="HBoxContainer1" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -54,6 +77,16 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer2/SubViewport"]
 
+[node name="CameraPivot" type="Node3D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer2/SubViewport"]
+
+[node name="CameraPosition" type="Marker3D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer2/SubViewport/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer2/SubViewport/CameraPivot/CameraPosition"]
+projection = 1
+size = 8.0
+near = 0.001
+
 [node name="SubViewportContainer3" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 
@@ -64,6 +97,16 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer3/SubViewport"]
 position = Vector2(-1000, -1000)
+
+[node name="CameraPivot" type="Node3D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer3/SubViewport"]
+
+[node name="CameraPosition" type="Marker3D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer3/SubViewport/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/VBoxContainer/HBoxContainer1/SubViewportContainer3/SubViewport/CameraPivot/CameraPosition"]
+projection = 1
+size = 8.0
+near = 0.001
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
