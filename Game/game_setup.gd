@@ -19,6 +19,18 @@ func _create_player_data():
 		var new_data: PlayerData = PlayerData.new()
 		new_data.player_id = player_instance
 		Gamehandler.playerdata.append(new_data)
+		_create_player_viewport(player_instance)
+
+func _create_player_viewport(player_id):
+	var row = player_id/2
+	var path = get_node("CanvasLayer/VBoxContainer/HBoxContainer%d"%row)
+	var name: String = "SubViewportContainer%d"%player_id
+	if path.has_node(name):
+		return
+
+	var new_viewport = load("res://gamesetup/sub_viewport_container_scene.tscn").instantiate()
+	new_viewport.name = "SubViewportContainer%d"%player_id
+	path.add_child(new_viewport)
 
 func _fill_player_data():
 	var level = get_node("level3D")
@@ -32,12 +44,21 @@ func _fill_player_data():
 		var viewport = node
 		var camera_pivot = node.get_node("CameraPivot")
 		var camera_direct = camera_pivot.get_node("CameraPosition/Camera3D")
-		var player = level.get_node("Entitys/Player%d"%[player_instance])
+		var player = _create_player_node(player_instance)
+		level.get_node("Entitys").add_child(player)
+		player.global_position = level.get_node("SpawnPoints/SpawnPlayer%d"%player_instance).global_position#+Vector3(0,5,0)
+		#player = level.get_node("Entitys/Player%d"%[player_instance])
 		
 		player_data.viewport = viewport
 		player_data.camera_pivot = camera_pivot
 		player_data.camera_direct = camera_direct
 		player_data.player = player
+
+func _create_player_node(player_id: int)->CharacterBody3D:
+	var player:Player = load("res://Game/characters/player3d.tscn").instantiate()
+	player.player_id = player_id
+	player.set_name("Player%d"%player_id) 
+	return player
 
 #####################################
 
@@ -76,10 +97,15 @@ func _init_viewport_camera2D(player_instance):
 
 func _init_viewport_camera3D(player_instance):
 	var player_data: PlayerData = Gamehandler.playerdata[player_instance]
-	var remote_transform := RemoteTransform3D.new()
+	var remote_transform: CameraPlayerAnchor = CameraPlayerAnchor.new()
+	#RemoteTransform3D.new()
+	
+	remote_transform.player = player_data.player
+	remote_transform.current_parent = remote_transform.player
 	
 	remote_transform.remote_path = player_data.camera_pivot.get_path()
 	player_data.player.add_child(remote_transform)
+	remote_transform.init()
 	
 	remote_transform.rotate_y((deg_to_rad(30)))
 	player_data.camera_pivot.get_node("CameraPosition").rotate_x(deg_to_rad(-45))

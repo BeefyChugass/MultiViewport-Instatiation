@@ -65,4 +65,16 @@ func _ready() -> void:
 		_add_player_actions(player_id,players[player_id])
 
 func get_controls(id: int) -> Array:
+	var controls = InputMap.get_actions()
+	var controls_for_id: Array = []
+	for action in controls:
+		var tester = action.split("_")
+		if tester[0] == "p%d"%id:
+			controls_for_id.append(action)
+	
+	print(controls_for_id)
 	return players[id]
+
+func _set_new_control(id:int, actionname:String,event:InputEvent):
+	InputMap.action_has_event(actionname,event)
+	

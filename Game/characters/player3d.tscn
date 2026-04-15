@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl3kxu7lg2cdb"]
+[gd_scene load_steps=14 format=3 uid="uid://dl3kxu7lg2cdb"]
 
 [ext_resource type="Texture2D" uid="uid://gfqgk7t40d67" path="res://icon.svg" id="1_dxs5l"]
 [ext_resource type="Script" uid="uid://bu434280orhuj" path="res://Game/characters/player_3d.gd" id="1_kav43"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://c06gkfgg44asj" path="res://Game/characters/health_component.gd" id="5_bgovk"]
 [ext_resource type="Script" uid="uid://c7r581h1phjyv" path="res://Game/characters/hitbox_component.gd" id="6_y4j2u"]
 [ext_resource type="Script" uid="uid://mmf7pbixiq3g" path="res://Game/characters/attack_component.gd" id="7_6up2f"]
+[ext_resource type="Script" uid="uid://c1o4yspvfqr3s" path="res://Game/characters/AimCursor.gd" id="8_nscvj"]
+[ext_resource type="Script" uid="uid://btrmgwnsfh3op" path="res://Game/characters/AimCursorMovementComponent.gd" id="9_egyej"]
+[ext_resource type="Script" uid="uid://caltav60yiw53" path="res://Game/characters/mode_component.gd" id="10_egyej"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cvvc4"]
 height = 1.0
@@ -14,9 +17,10 @@ height = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_y4j2u"]
 radius = 1.0
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nscvj"]
+
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_kav43")
-player_id = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_cvvc4")
@@ -63,5 +67,33 @@ script = ExtResource("7_6up2f")
 Body = NodePath("..")
 hitbox_component = NodePath("../HitboxComponent")
 metadata/_custom_type_script = "uid://mmf7pbixiq3g"
+
+[node name="AimCursor" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+script = ExtResource("8_nscvj")
+
+[node name="AimCursorMovementComponent" type="Node" parent="AimCursor" node_paths=PackedStringArray("cursor", "player", "input_component", "mode_component")]
+script = ExtResource("9_egyej")
+cursor = NodePath("..")
+player = NodePath("../..")
+input_component = NodePath("../../InputComponent")
+mode_component = NodePath("../../ModeComponent")
+metadata/_custom_type_script = "uid://btrmgwnsfh3op"
+
+[node name="HitboxComponent" type="Area3D" parent="AimCursor" node_paths=PackedStringArray("Body")]
+collision_layer = 2
+script = ExtResource("6_y4j2u")
+Body = NodePath("")
+metadata/_custom_type_script = "uid://c7r581h1phjyv"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AimCursor/HitboxComponent"]
+shape = SubResource("CapsuleShape3D_nscvj")
+debug_color = Color(0.7, 0, 0, 0.41960785)
+
+[node name="ModeComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_egyej")
+metadata/_custom_type_script = "uid://caltav60yiw53"
 
 [connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

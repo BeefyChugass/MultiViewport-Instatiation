@@ -7,3 +7,4 @@ var viewport: SubViewport
 var camera_pivot: Node3D
 var camera_direct: Camera3D
 var player: Node
+var ui: CanvasLayer

@@ -6,17 +6,21 @@ class_name Player
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var hitbox_component: HitboxComponent = %HitboxComponent
 @onready var attack_component: AttackComponent = %AttackComponent
+@onready var aim_cursor: AimCursor = %AimCursor
+@onready var mode_component: ModeComponent = %ModeComponent
 
 
 @export var player_id: int = 0
 var controls: Array
 var speed = 3
+var camera_anchor: CameraPlayerAnchor
 
 func _ready() -> void:
 	health_component.died.connect(_on_died)
 	
 	controls = Controls.get_controls(player_id)
 	var sprite = get_node("Sprite3D")
+	
 	match player_id:
 		0:
 			sprite.modulate = Color(0,1,1,1)
@@ -35,8 +39,15 @@ func _physics_process(delta: float) -> void:
 	
 	#read movement component
 	movement_component.direction = input_component.move_dir
+	aim_cursor.aim_cursor_movement_component.direction = input_component.move_dir
 	movement_component.wants_jump = input_component.jump_pressed
 	
+	if mode_component.is_move_mode():
+#		if movement_component.is_moving == false:
+		movement_component.tick(delta)
+	if mode_component.is_aim_mode():
+		aim_cursor.aim_cursor_movement_component.tick(delta)
+
 	if input_component.heal_pressed == true:
 		health_component.heal(10)
 	if input_component.hurt_pressed == true:
@@ -47,7 +58,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 	#do tick
-	movement_component.tick(delta)
 
 func _on_died() -> void:
 	print("Player %d died"%player_id)
